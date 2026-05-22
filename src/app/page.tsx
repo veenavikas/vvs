@@ -124,9 +124,9 @@ export default function Home() {
 
       {/* Cinematic Intro & Aspect-Ratio Bars */}
       <div className="cinema-intro" aria-hidden="true">
-        <div className="cinema-intro-text">Digital IT Hub presents</div>
-        <div className="cinema-intro-text">A story of a builder who trains builders</div>
-        <div className="cinema-intro-text">And ships production systems that scale</div>
+        <div className="cinema-intro-text">Veena Vikas B presents</div>
+        <div className="cinema-intro-text">A story of building systems from scratch</div>
+        <div className="cinema-intro-text">And training the developers who scale them</div>
       </div>
       <div className="cinematic-bar-top" aria-hidden="true" />
       <div className="cinematic-bar-bottom" aria-hidden="true" />
