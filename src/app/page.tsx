@@ -1,7 +1,9 @@
 import React from "react";
+import Link from "next/link";
 import Marquee from "@/components/Marquee";
 import ScrollFallbacks from "@/components/ScrollFallbacks";
 import CommandCenter from "@/components/CommandCenter";
+import Header from "@/components/Header";
 
 // FLAGSHIP PRODUCTS DATA
 const products = [
@@ -28,7 +30,7 @@ const products = [
     name: "PostWise India",
     tagline: "AI content platform — Hindi · Telugu · WhatsApp-native",
     desc: "AI rewrites content in each platform's tone automatically. Regional language support for Hindi + Telugu. WhatsApp approval workflow. White-label SaaS for agencies.",
-    link: "#",
+    link: "/products",
     tech: ["AI/NLP", "Hindi + Telugu", "WhatsApp API", "White-label"],
     external: false,
   },
@@ -37,7 +39,7 @@ const products = [
     name: "SegoAuto",
     tagline: "Live vehicle tracking — API-key based fleet intelligence",
     desc: "Client-facing vehicle tracking system with real-time GPS data, API key authentication, and a live map interface for fleet managers.",
-    link: "#",
+    link: "/products",
     tech: ["REST API", "Real-time", "Node.js", "GPS Integration"],
     external: false,
   },
@@ -132,20 +134,7 @@ export default function Home() {
       <div className="cinematic-bar-bottom" aria-hidden="true" />
 
       {/* HEADER NAVIGATION */}
-      <header>
-        <nav aria-label="Main Navigation">
-          <a href="#" className="nav-logo" id="navLogoBrand">
-            VVB
-          </a>
-          <div className="nav-links">
-            <a href="#story" id="linkStory">Story</a>
-            <a href="#products" id="linkProducts">Products</a>
-            <a href="#ai" id="linkAi">AI Suite</a>
-            <a href="#training" id="linkTraining">Training</a>
-            <a href="#contact" id="linkContact">Contact</a>
-          </div>
-        </nav>
-      </header>
+      <Header isHome={true} />
 
       <main>
         {/* Cinematic Atmosphere overlays */}
@@ -217,6 +206,11 @@ export default function Home() {
               And now I'm building the AI systems that will change entire industries —
               starting with <strong>LexAI</strong>, a legal intelligence engine for India's 1.7 million lawyers.
             </p>
+            <div style={{ marginTop: '24px' }}>
+              <Link href="/story" className="console-action-btn active" style={{ display: 'inline-block', textDecoration: 'none' }}>
+                Explore Story & Leadership Scrum →
+              </Link>
+            </div>
           </div>
           <div className="story-right reveal reveal-delay-2">
             <div className="story-card">
@@ -290,6 +284,11 @@ export default function Home() {
               );
             })}
           </div>
+          <div style={{ marginTop: '40px', textAlign: 'center' }}>
+            <Link href="/products" className="console-action-btn active" style={{ display: 'inline-block', textDecoration: 'none' }}>
+              Inspect Architecture & Tech Specs →
+            </Link>
+          </div>
         </section>
 
         {/* AI SUITE SECTION */}
@@ -323,6 +322,11 @@ export default function Home() {
                 <div className="ai-product-price-label">{ai.priceLabel}</div>
               </div>
             ))}
+          </div>
+          <div style={{ marginTop: '40px', textAlign: 'center' }}>
+            <Link href="/ai" className="console-action-btn active" style={{ display: 'inline-block', textDecoration: 'none' }}>
+              Run Live RAG Playground & Stream AI →
+            </Link>
           </div>
         </section>
 
@@ -370,6 +374,11 @@ export default function Home() {
               Now I'm launching my next cohort: <strong>Agentic AI Engineering</strong> — the skill
               that pays ₹30–80 LPA in 2026.
             </p>
+            <div style={{ marginTop: '24px' }}>
+              <Link href="/training" className="console-action-btn active" style={{ display: 'inline-block', textDecoration: 'none' }}>
+                View Full Syllabus & Cohorts →
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -414,6 +423,12 @@ export default function Home() {
               bveenavikas@gmail.com
             </a>
             
+            <div style={{ marginTop: '32px' }}>
+              <Link href="/contact" className="submit-btn" style={{ display: 'inline-block', textDecoration: 'none', color: '#0A0807', fontWeight: 'bold' }}>
+                Book Agile PM Consultation →
+              </Link>
+            </div>
+
             <div className="contact-links" aria-label="Social media and project links">
               <a
                 href="https://www.linkedin.com/in/veena-vikas-b-77364324b/"
@@ -432,24 +447,6 @@ export default function Home() {
                 id="linkGitHub"
               >
                 GitHub
-              </a>
-              <a
-                href="https://theswaadam.com"
-                className="contact-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                id="linkSwaadamSite"
-              >
-                The Swaadam
-              </a>
-              <a
-                href="https://teachures.com"
-                className="contact-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                id="linkTeachuresSite"
-              >
-                Teachures
               </a>
             </div>
             
