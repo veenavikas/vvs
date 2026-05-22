@@ -122,6 +122,15 @@ export default function Home() {
       {/* Dynamic Scroll & Animation progressive fallbacks */}
       <ScrollFallbacks />
 
+      {/* Cinematic Intro & Aspect-Ratio Bars */}
+      <div className="cinema-intro" aria-hidden="true">
+        <div className="cinema-intro-text">Digital IT Hub presents</div>
+        <div className="cinema-intro-text">A story of a builder who trains builders</div>
+        <div className="cinema-intro-text">And ships production systems that scale</div>
+      </div>
+      <div className="cinematic-bar-top" aria-hidden="true" />
+      <div className="cinematic-bar-bottom" aria-hidden="true" />
+
       {/* HEADER NAVIGATION */}
       <header>
         <nav aria-label="Main Navigation">
@@ -139,6 +148,10 @@ export default function Home() {
       </header>
 
       <main>
+        {/* Cinematic Atmosphere overlays */}
+        <div className="cinematic-vignette" aria-hidden="true" />
+        <div className="lens-flare" aria-hidden="true" />
+
         {/* Ambient background glows for premium colorful depth */}
         <div className="ambient-glow-1" aria-hidden="true" />
         <div className="ambient-glow-2" aria-hidden="true" />
