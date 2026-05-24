@@ -58,15 +58,15 @@ export default function TrainingPage() {
 
         {/* Training Metrics Counter Grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", marginBottom: "48px" }}>
-          <div style={{ background: "var(--card-glass)", padding: "24px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.03)", backdropFilter: "blur(12px)", textAlign: "center" }}>
+          <div style={{ background: "var(--card-glass)", padding: "24px", borderRadius: "12px", border: "1px solid var(--glass-border)", backdropFilter: "blur(12px)", textAlign: "center" }}>
             <div style={{ fontFamily: "var(--font-mono)", color: "var(--accent-gold)", fontSize: "clamp(32px, 5vw, 48px)", fontWeight: "bold" }}>200+</div>
             <div style={{ color: "var(--text-white)", fontSize: "12px", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "8px" }}>Students Trained</div>
           </div>
-          <div style={{ background: "var(--card-glass)", padding: "24px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.03)", backdropFilter: "blur(12px)", textAlign: "center" }}>
+          <div style={{ background: "var(--card-glass)", padding: "24px", borderRadius: "12px", border: "1px solid var(--glass-border)", backdropFilter: "blur(12px)", textAlign: "center" }}>
             <div style={{ fontFamily: "var(--font-mono)", color: "var(--accent-orange)", fontSize: "clamp(32px, 5vw, 48px)", fontWeight: "bold" }}>80%</div>
             <div style={{ color: "var(--text-white)", fontSize: "12px", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "8px" }}>Job Placement Rate</div>
           </div>
-          <div style={{ background: "var(--card-glass)", padding: "24px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.03)", backdropFilter: "blur(12px)", textAlign: "center" }}>
+          <div style={{ background: "var(--card-glass)", padding: "24px", borderRadius: "12px", border: "1px solid var(--glass-border)", backdropFilter: "blur(12px)", textAlign: "center" }}>
             <div style={{ fontFamily: "var(--font-mono)", color: "var(--accent-teal)", fontSize: "clamp(32px, 5vw, 48px)", fontWeight: "bold" }}>30%</div>
             <div style={{ color: "var(--text-white)", fontSize: "12px", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "8px" }}>Batch Onboarding Cut</div>
           </div>
@@ -192,8 +192,8 @@ export default function TrainingPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 style={{
-                  background: "rgba(10, 8, 7, 0.7)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "var(--bg-mahogany)",
+                  border: "1px solid rgba(184, 134, 11, 0.25)",
                   color: "var(--text-cream)",
                   fontFamily: "var(--font-serif)",
                   fontSize: "13px",
@@ -208,10 +208,10 @@ export default function TrainingPage() {
           </div>
 
           {/* Placements Table/Grid */}
-          <div style={{ background: "var(--card-glass)", border: "1px solid rgba(255,255,255,0.03)", borderRadius: "8px", overflow: "hidden" }}>
+          <div style={{ background: "var(--card-glass)", border: "1px solid rgba(184, 134, 11, 0.15)", borderRadius: "8px", overflow: "hidden" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", color: "var(--text-cream)", fontSize: "14px", textAlign: "left" }}>
               <thead>
-                <tr style={{ background: "rgba(22, 18, 16, 0.5)", borderBottom: "1px solid rgba(255,255,255,0.06)", color: "var(--accent-gold)", fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                <tr style={{ background: "rgba(184, 134, 11, 0.06)", borderBottom: "1px solid rgba(184, 134, 11, 0.15)", color: "var(--accent-gold)", fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                   <th style={{ padding: "16px 20px" }}>ID</th>
                   <th style={{ padding: "16px 20px" }}>Student Name</th>
                   <th style={{ padding: "16px 20px" }}>Placed Role</th>
@@ -224,7 +224,7 @@ export default function TrainingPage() {
               <tbody>
                 {filteredPlacements.length > 0 ? (
                   filteredPlacements.map((student) => (
-                    <tr key={student.id} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", transition: "background 0.3s ease" }} className="table-row-hover">
+                    <tr key={student.id} style={{ borderBottom: "1px solid rgba(184, 134, 11, 0.1)", transition: "background 0.3s ease" }} className="table-row-hover">
                       <td style={{ padding: "16px 20px", fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--text-gold-dust)" }}>{student.id}</td>
                       <td style={{ padding: "16px 20px", fontWeight: "bold", color: "var(--text-white)" }}>{student.name}</td>
                       <td style={{ padding: "16px 20px" }}>{student.role}</td>
@@ -236,9 +236,9 @@ export default function TrainingPage() {
                           className="placement-badge" 
                           style={{ 
                             fontSize: "9px", 
-                            background: student.status === "Verified Placement" ? "rgba(92,122,94,0.15)" : "rgba(255, 94, 26, 0.1)", 
-                            borderColor: student.status === "Verified Placement" ? "rgba(92,122,94,0.3)" : "rgba(255, 94, 26, 0.2)",
-                            color: student.status === "Verified Placement" ? "#84a986" : "var(--accent-orange)"
+                            background: student.status === "Verified Placement" ? "rgba(4, 120, 87, 0.15)" : "rgba(255, 94, 26, 0.1)", 
+                            borderColor: student.status === "Verified Placement" ? "rgba(4, 120, 87, 0.3)" : "rgba(255, 94, 26, 0.2)",
+                            color: student.status === "Verified Placement" ? "var(--accent-emerald)" : "var(--accent-orange)"
                           }}
                         >
                           {student.status}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Syne, DM_Mono } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
+import ThemeScript from "@/components/ThemeScript";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
@@ -49,9 +50,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${syne.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${syne.variable} ${dmMono.variable}`} suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body>
         <div className="progress-bar" id="progressBar" aria-hidden="true" />
+        <div className="designer-grid" aria-hidden="true" />
         <CustomCursor />
         {children}
       </body>

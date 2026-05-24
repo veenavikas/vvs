@@ -28,6 +28,16 @@ export default function CommandCenter() {
   const [progress, setProgress] = useState<number>(0);
   const terminalEndRef = useRef<HTMLDivElement>(null);
 
+  const [toasts, setToasts] = useState<{ id: string; message: string; icon: string }[]>([]);
+
+  const showToast = (message: string, icon: string) => {
+    const newToast = { id: Math.random().toString(), message, icon };
+    setToasts((prev) => [...prev, newToast]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== newToast.id));
+    }, 4000);
+  };
+
   // Auto-scroll terminal logs
   useEffect(() => {
     terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -54,6 +64,7 @@ export default function CommandCenter() {
       setLatency(newLat);
       setLogs((prev) => [...prev, `✔ AWS Response received: ${newLat} (optimal)`]);
       setIsPinging(false);
+      showToast(`AWS Connection stable: latency is ${newLat}`, "📡");
     }, 1200);
   };
 
@@ -70,6 +81,7 @@ export default function CommandCenter() {
           clearInterval(interval);
           setLogs((prev) => [...prev, "✔ LexAI precedent ingestion completed. Precedents optimized."]);
           setIsIngesting(false);
+          showToast("LexAI precedents mapped to pgvector store successfully!", "⚙");
           return 100;
         }
         return old + 20;
@@ -157,6 +169,16 @@ export default function CommandCenter() {
           </div>
           <div className="metric-bar-bg"><div className="metric-bar-fill emerald-bar" style={{ width: "80%" }}></div></div>
         </div>
+      </div>
+
+      {/* Glassmorphic Toast Portal (Fixed Viewport Layout) */}
+      <div className="toast-container" aria-live="polite">
+        {toasts.map((toast) => (
+          <div key={toast.id} className="toast-item">
+            <span className="toast-icon">{toast.icon}</span>
+            <span className="toast-message">{toast.message}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

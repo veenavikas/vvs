@@ -131,6 +131,74 @@ def verify_safety_threshold(dose_mg, weight_kg):
     return True
 \`\`\`
 `
+  },
+  lendai: {
+    prompt: "python credit_underwriter.py --borrower 'Swaadam Foods (VVB Proprietor)' --amount 2500000 --tenure 36",
+    logs: [
+      "[SYSTEM] Initializing LendAI Underwriting Engine...",
+      "[INGEST] Ingesting borrower CIBIL, GST, ITR & bank records (24 months)...",
+      "[RAG-INDEX] Similarity search computed using Voyage Finance-2 embeddings...",
+      "[RETRIEVAL] Retaining RBI MSME Lending Guidelines & internal NBFC credit policy...",
+      "[CALCULATOR] Evaluating hard reject filters: DPD = 0, CIBIL = 765, LTI = 1.2x. Passed.",
+      "[LLM] Dispatching structured financials (12,400 tokens) to Claude via Anthropic API..."
+    ],
+    output: `{
+  "application_id": "APP-2026-VVB-892",
+  "borrower_name": "Swaadam Foods (Proprietor: Veena Vikas B)",
+  "decision": "APPROVED",
+  "loan_amount_requested": 2500000,
+  "loan_amount_approved": 2500000,
+  "interest_rate": "12.0% p.a.",
+  "tenure_months": 36,
+  "emi_estimated": 83035,
+
+  "hard_reject_triggered": false,
+  "hard_reject_reason": null,
+
+  "risk_scores": {
+    "bureau_score": { "raw": 10, "weight": 0.30, "weighted": 3.00 },
+    "income_stability": { "raw": 9, "weight": 0.25, "weighted": 2.25 },
+    "debt_service_ratio": { "raw": 8, "weight": 0.20, "weighted": 1.60 },
+    "business_vintage": { "raw": 9, "weight": 0.15, "weighted": 1.35 },
+    "document_quality": { "raw": 10, "weight": 0.10, "weighted": 1.00 },
+    "total_weighted_score": 9.20
+  },
+
+  "evidence": {
+    "bureau": "CIBIL score: 765, active loans: 1, DPD 24m: 0, zero write-offs",
+    "income": "Average monthly bank inflow: ₹4,80,000, ITR net income: ₹32,00,000 p.a.",
+    "gst": "Average monthly turnover: ₹5,50,000, GST filing regularity: 12/12 months",
+    "debt_obligations": "Existing EMIs: ₹15,000/month. Proposed EMI: ₹83,035/month. DSCR: 20.4%",
+    "red_flags": []
+  },
+
+  "policy_citations": [
+    {
+      "rule": "MSME lending preferential pricing",
+      "source": "RBI Master Direction on MSME Lending (Section 4.2)",
+      "chunk_id": "rbi_msme_2024_082"
+    },
+    {
+      "rule": "Bureau risk evaluation guidelines",
+      "source": "Internal NBFC Credit Policy v2.4 (CIBIL Category A)",
+      "chunk_id": "nbfc_policy_sec3_a"
+    }
+  ],
+
+  "decision_rationale": "Swaadam Foods demonstrates excellent financial health with a weighted risk score of 9.20. Borrower CIBIL is highly favorable at 765 with zero DPD history. Cash inflows are steady with robust average bank balances. The proposed debt service ratio is well within safe thresholds under 40%. The loan is approved for the full requested amount at the MSME base preferential rate of 12.0% p.a.",
+
+  "conditions": [
+    "Execute automated NACH mandate via Stitch API before disbursement",
+    "Hypothecation Swaadam Foods raw inventory as collateral"
+  ],
+
+  "pricing_rationale": "Base rate 12% p.a. applied. CIBIL score is 750+ (765) qualifying for no positive spread. Borrower is eligible for a 0.5% preferential rate under Priority Sector lending rules which offsets the 0.5% proprietor risk premium, resulting in a net interest rate of 12.0% p.a.",
+
+  "escalation_required": false,
+  "escalation_reason": null,
+  "confidence": 0.98,
+  "confidence_note": "Perfect document consistency and robust historical bank statement flow verified."
+}`
   }
 };
 
@@ -244,26 +312,30 @@ export default function AISuitePage() {
               </ul>
             </div>
 
-            {/* Four Vertical RAG Guides Summary */}
+            {/* Five Vertical RAG Guides Summary */}
             <h3 style={{ fontFamily: "var(--font-sans)", color: "var(--text-white)", marginBottom: "16px", fontSize: "18px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               High-Value RAG Implementations
             </h3>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px", marginBottom: "40px" }}>
-              <div style={{ background: "rgba(0,0,0,0.3)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.03)" }}>
+              <div style={{ background: "rgba(255,255,255,0.45)", padding: "16px", borderRadius: "8px", border: "1px solid var(--glass-border)", boxShadow: "var(--box-shadow-flat)" }}>
                 <h4 style={{ color: "var(--accent-gold)", fontSize: "14px", fontFamily: "var(--font-mono)", textTransform: "uppercase", marginBottom: "6px" }}>1. LexAI Legal Search</h4>
-                <p style={{ color: "var(--text-gold-dust)", fontSize: "13px", lineHeight: "1.4" }}>Retrieves and synthesizes judicial precedents, providing precise case citations and page references from local databases.</p>
+                <p style={{ color: "var(--text-cream)", fontSize: "13px", lineHeight: "1.4" }}>Retrieves and synthesizes judicial precedents, providing precise case citations and page references from local databases.</p>
               </div>
-              <div style={{ background: "rgba(0,0,0,0.3)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.03)" }}>
+              <div style={{ background: "rgba(255,255,255,0.45)", padding: "16px", borderRadius: "8px", border: "1px solid var(--glass-border)", boxShadow: "var(--box-shadow-flat)" }}>
                 <h4 style={{ color: "var(--accent-orange)", fontSize: "14px", fontFamily: "var(--font-mono)", textTransform: "uppercase", marginBottom: "6px" }}>2. FinCompAI Regulations</h4>
-                <p style={{ color: "var(--text-gold-dust)", fontSize: "13px", lineHeight: "1.4" }}>Queries central bank circulars (RBI/SEBI) to provide compliance checklists and outsourcing guidelines for multi-tenant software.</p>
+                <p style={{ color: "var(--text-cream)", fontSize: "13px", lineHeight: "1.4" }}>Queries central bank circulars (RBI/SEBI) to provide compliance checklists and outsourcing guidelines for multi-tenant software.</p>
               </div>
-              <div style={{ background: "rgba(0,0,0,0.3)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.03)" }}>
-                <h4 style={{ color: "var(--accent-teal)", fontSize: "14px", fontFamily: "var(--font-mono)", textTransform: "uppercase", marginBottom: "6px" }}>3. SalesIQ CRM Agent</h4>
-                <p style={{ color: "var(--text-gold-dust)", fontSize: "13px", lineHeight: "1.4" }}>Integrates active pipeline data from Asana and contract records to forecast project scoping parameters and delivery risks.</p>
+              <div style={{ background: "rgba(255,255,255,0.45)", padding: "16px", borderRadius: "8px", border: "1px solid var(--glass-border)", boxShadow: "var(--box-shadow-flat)" }}>
+                <h4 style={{ color: "var(--accent-cyan)", fontSize: "14px", fontFamily: "var(--font-mono)", textTransform: "uppercase", marginBottom: "6px" }}>3. SalesIQ CRM Agent</h4>
+                <p style={{ color: "var(--text-cream)", fontSize: "13px", lineHeight: "1.4" }}>Integrates active pipeline data from Asana and contract records to forecast project scoping parameters and delivery risks.</p>
               </div>
-              <div style={{ background: "rgba(0,0,0,0.3)", padding: "16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.03)" }}>
-                <h4 style={{ color: "rgba(132, 169, 134, 1)", fontSize: "14px", fontFamily: "var(--font-mono)", textTransform: "uppercase", marginBottom: "6px" }}>4. MediAssist Citations</h4>
-                <p style={{ color: "var(--text-gold-dust)", fontSize: "13px", lineHeight: "1.4" }}>Extracts dosage guidelines and clinical references, employing double-pass safety checks before output generation.</p>
+              <div style={{ background: "rgba(255,255,255,0.45)", padding: "16px", borderRadius: "8px", border: "1px solid var(--glass-border)", boxShadow: "var(--box-shadow-flat)" }}>
+                <h4 style={{ color: "var(--accent-emerald)", fontSize: "14px", fontFamily: "var(--font-mono)", textTransform: "uppercase", marginBottom: "6px" }}>4. MediAssist Citations</h4>
+                <p style={{ color: "var(--text-cream)", fontSize: "13px", lineHeight: "1.4" }}>Extracts dosage guidelines and clinical references, employing double-pass safety checks before output generation.</p>
+              </div>
+              <div style={{ background: "rgba(255,255,255,0.45)", padding: "16px", borderRadius: "8px", border: "1px solid var(--glass-border)", gridColumn: "span 2", boxShadow: "var(--box-shadow-flat)" }}>
+                <h4 style={{ color: "var(--accent-orange)", fontSize: "14px", fontFamily: "var(--font-mono)", textTransform: "uppercase", marginBottom: "6px" }}>5. LendAI Underwriting</h4>
+                <p style={{ color: "var(--text-cream)", fontSize: "13px", lineHeight: "1.4" }}>Parses bank statements, GST, ITR and CIBIL data against RBI rules using Voyage Finance-2 embeddings, emitting fully auditable JSON credit decisions synced with Stitch Core API disbursement triggers.</p>
               </div>
             </div>
           </article>
@@ -345,10 +417,17 @@ export default function AISuitePage() {
                 >
                   MediAssist RAG
                 </button>
+                <button 
+                  className={`console-action-btn ${activeTab === "lendai" ? "active" : ""}`}
+                  onClick={() => setActiveTab("lendai")}
+                  disabled={isStreaming}
+                >
+                  LendAI Credit RAG
+                </button>
               </div>
             </div>
             
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "16px", textAlign: "right" }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-gold-dust)", marginTop: "16px", textAlign: "right" }}>
               Active Repo: <a href="https://github.com/veenavikas/ai-engineering" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent-gold)" }}>veenavikas/ai-engineering ↗</a>
             </p>
           </aside>

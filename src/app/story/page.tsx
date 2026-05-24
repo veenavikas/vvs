@@ -92,7 +92,7 @@ export default function StoryPage() {
           <aside className="story-sidebar">
             {/* Education Widget */}
             <div className="product-arch-card" style={{ padding: "24px", marginBottom: "32px" }}>
-              <h3 style={{ fontFamily: "var(--font-sans)", color: "var(--text-white)", fontSize: "16px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "16px", borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: "8px" }}>
+              <h3 style={{ fontFamily: "var(--font-sans)", color: "var(--text-white)", fontSize: "16px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "16px", borderBottom: "1px solid rgba(184, 134, 11, 0.15)", paddingBottom: "8px" }}>
                 Education & Roots
               </h3>
               <h4 style={{ color: "var(--accent-gold)", fontSize: "16px", fontWeight: "bold" }}>B.Tech in ECE</h4>
@@ -113,7 +113,7 @@ export default function StoryPage() {
 
             {/* Certifications Timeline */}
             <div className="product-arch-card" style={{ padding: "24px" }}>
-              <h3 style={{ fontFamily: "var(--font-sans)", color: "var(--text-white)", fontSize: "16px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "20px", borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: "8px" }}>
+              <h3 style={{ fontFamily: "var(--font-sans)", color: "var(--text-white)", fontSize: "16px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "20px", borderBottom: "1px solid rgba(184, 134, 11, 0.15)", paddingBottom: "8px" }}>
                 Verified Credentials
               </h3>
               

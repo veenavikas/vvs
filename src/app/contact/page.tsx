@@ -88,24 +88,24 @@ export default function ContactPage() {
 
             {/* Visual Coordinates Details */}
             <div className="product-arch-card" style={{ padding: "24px", marginBottom: "32px" }}>
-              <h3 style={{ fontFamily: "var(--font-sans)", color: "var(--text-white)", fontSize: "16px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "20px", borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: "8px" }}>
+              <h3 style={{ fontFamily: "var(--font-sans)", color: "var(--text-white)", fontSize: "16px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "20px", borderBottom: "1px solid rgba(184, 134, 11, 0.15)", paddingBottom: "8px" }}>
                 Communication Anchors
               </h3>
               
               <div style={{ display: "flex", flexDirection: "column", gap: "16px", fontSize: "15px", color: "var(--text-cream)" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.03)", paddingBottom: "8px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid rgba(184, 134, 11, 0.12)", paddingBottom: "8px" }}>
                   <span style={{ fontFamily: "var(--font-mono)", color: "var(--accent-gold)", fontSize: "11px", textTransform: "uppercase" }}>Email Node:</span>
                   <a href="mailto:bveenavikas@gmail.com" style={{ color: "var(--text-white)", textDecoration: "none" }}>bveenavikas@gmail.com</a>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.03)", paddingBottom: "8px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid rgba(184, 134, 11, 0.12)", paddingBottom: "8px" }}>
                   <span style={{ fontFamily: "var(--font-mono)", color: "var(--accent-gold)", fontSize: "11px", textTransform: "uppercase" }}>Phone Trunk:</span>
                   <a href="tel:+919059072293" style={{ color: "var(--text-white)", textDecoration: "none" }}>+91-9059072293</a>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.03)", paddingBottom: "8px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid rgba(184, 134, 11, 0.12)", paddingBottom: "8px" }}>
                   <span style={{ fontFamily: "var(--font-mono)", color: "var(--accent-gold)", fontSize: "11px", textTransform: "uppercase" }}>LinkedIn Protocol:</span>
                   <a href="https://linkedin.com/in/veena-vikas-b" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent-teal)", textDecoration: "none" }}>linkedin.com/in/veena-vikas-b ↗</a>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.03)", paddingBottom: "8px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid rgba(184, 134, 11, 0.12)", paddingBottom: "8px" }}>
                   <span style={{ fontFamily: "var(--font-mono)", color: "var(--accent-gold)", fontSize: "11px", textTransform: "uppercase" }}>GitHub Repository:</span>
                   <a href="https://github.com/veenavikas" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent-teal)", textDecoration: "none" }}>github.com/veenavikas ↗</a>
                 </div>

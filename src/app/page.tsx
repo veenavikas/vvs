@@ -43,6 +43,15 @@ const products = [
     tech: ["REST API", "Real-time", "Node.js", "GPS Integration"],
     external: false,
   },
+  {
+    num: "005",
+    name: "LendAI",
+    tagline: "AI Underwriting Engine — RBI-compliant NBFC credit decisioning",
+    desc: "AI-native underwriting engine replacing manual credit review for Indian NBFCs. Analyzes bank statements, CIBIL, GST, and ITR documents in under 5 minutes with full pgvector RAG auditable policy reasoning.",
+    link: "/products",
+    tech: ["Claude API", "Python RAG", "FastAPI", "pgvector", "Stitch Core"],
+    external: false,
+  },
 ];
 
 // AI PRODUCTS DATA
